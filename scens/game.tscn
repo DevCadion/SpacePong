@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5e2mjebc3mqy"]
+[gd_scene load_steps=12 format=3 uid="uid://b5e2mjebc3mqy"]
 
 [ext_resource type="Texture2D" uid="uid://c4v1hqg67bpd6" path="res://sprites/Fundo1.png" id="1_7lg5d"]
 [ext_resource type="Script" uid="uid://ckoix8q8625y6" path="res://scripts/game.gd" id="1_vfjwf"]
 [ext_resource type="FontFile" uid="uid://cg6jthlf2tw1r" path="res://fonts/BalooThambi2-Bold.ttf" id="2_3an71"]
 [ext_resource type="PackedScene" uid="uid://cwt5fd4qyem1t" path="res://scens/player.tscn" id="2_ulfje"]
 [ext_resource type="PackedScene" uid="uid://cnqcnpfe8ivtf" path="res://scens/ball.tscn" id="3_xahwf"]
+[ext_resource type="FontFile" uid="uid://dybneaacmwsgx" path="res://fonts/BalooThambi2-ExtraBold.ttf" id="6_gpwcj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i34al"]
+font = ExtResource("6_gpwcj")
+font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_vfjwf"]
 font = ExtResource("2_3an71")
@@ -15,7 +20,7 @@ font_color = Color(0.447059, 0.00392157, 0.960784, 1)
 size = Vector2(600, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xahwf"]
-size = Vector2(30, 960)
+size = Vector2(30, 958.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3an71"]
 size = Vector2(600, 33)
@@ -27,11 +32,19 @@ script = ExtResource("1_vfjwf")
 texture = ExtResource("1_7lg5d")
 centered = false
 
+[node name="Tutorial" type="Label" parent="."]
+offset_right = 543.0
+offset_bottom = 956.0
+text = "Press 'Space' to start"
+label_settings = SubResource("LabelSettings_i34al")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Pongs" type="Label" parent="."]
-offset_left = 159.0
-offset_top = 292.0
-offset_right = 387.0
-offset_bottom = 668.0
+visible = false
+offset_top = -6.0
+offset_right = 539.0
+offset_bottom = 964.0
 text = "0"
 label_settings = SubResource("LabelSettings_vfjwf")
 horizontal_alignment = 1
@@ -47,13 +60,13 @@ shape = SubResource("RectangleShape2D_ulfje")
 [node name="LeftWall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(-15, 480)
+position = Vector2(-15, 479.75)
 shape = SubResource("RectangleShape2D_xahwf")
 
 [node name="RithWall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RithWall"]
-position = Vector2(555, 480)
+position = Vector2(555, 479.5)
 shape = SubResource("RectangleShape2D_xahwf")
 
 [node name="Full" type="Area2D" parent="."]
@@ -67,3 +80,5 @@ debug_color = Color(0.85346, 0.000814565, 0.891719, 0.42)
 position = Vector2(270, 830)
 
 [node name="Player" parent="." instance=ExtResource("2_ulfje")]
+
+[connection signal="body_entered" from="Full" to="." method="_on_full_body_entered"]

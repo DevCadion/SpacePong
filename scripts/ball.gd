@@ -19,7 +19,6 @@ func _physics_process(delta):
 				
 			else:
 				velocity = velocity.bounce(collisions.get_normal())
-		print(pongs)
 
 func start_game():
 	started = true
