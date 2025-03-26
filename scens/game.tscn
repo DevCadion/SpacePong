@@ -81,4 +81,23 @@ position = Vector2(270, 830)
 
 [node name="Player" parent="." instance=ExtResource("2_ulfje")]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Positions" type="Marker2D" parent="."]
+
+[node name="Pos_01" type="Marker2D" parent="Positions"]
+position = Vector2(649, 281)
+
+[node name="Pos_02" type="Marker2D" parent="Positions"]
+position = Vector2(641, 92)
+
+[node name="Pos_03" type="Marker2D" parent="Positions"]
+position = Vector2(-185, 428)
+
+[node name="Pos_04" type="Marker2D" parent="Positions"]
+position = Vector2(-185, 264)
+
 [connection signal="body_entered" from="Full" to="." method="_on_full_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
