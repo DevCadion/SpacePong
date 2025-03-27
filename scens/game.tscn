@@ -52,24 +52,32 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TopWall" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
 position = Vector2(270, -14.5)
 shape = SubResource("RectangleShape2D_ulfje")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
 position = Vector2(-15, 479.75)
 shape = SubResource("RectangleShape2D_xahwf")
 
 [node name="RithWall" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RithWall"]
 position = Vector2(555, 479.5)
 shape = SubResource("RectangleShape2D_xahwf")
 
 [node name="Full" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Full"]
 position = Vector2(270, 976.5)
@@ -78,8 +86,11 @@ debug_color = Color(0.85346, 0.000814565, 0.891719, 0.42)
 
 [node name="Ball" parent="." instance=ExtResource("3_xahwf")]
 position = Vector2(270, 830)
+collision_layer = 2
+collision_mask = 29
 
 [node name="Player" parent="." instance=ExtResource("2_ulfje")]
+collision_mask = 6
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

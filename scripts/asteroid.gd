@@ -17,3 +17,8 @@ func _process(delta):
 	elif (start_side == "left"):
 		global_position.x += speed * delta 
 		rotation += rotation_speed * delta
+
+
+func _on_body_entered(body):
+	body.pongs += 1
+	queue_free()
